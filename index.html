@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subhra Bastralaya Recharge Centre</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>
+            Subhra Bastralaya Recharge Centre
+        </h1>
+
+        <p class="subtitle">
+            মোবাইল রিচার্জ পরিষেবা
+        </p>
+
+        <div class="notice">
+            Recharge usually completed within 5 minutes.<br>
+            রিচার্জ সাধারণত ৫ মিনিটের মধ্যে সম্পন্ন হয়।
+        </div>
+
+        <form id="rechargeForm">
+
+            <label>
+                Mobile Number<br>
+                মোবাইল নম্বর
+            </label>
+
+            <input 
+                type="tel"
+                id="mobile"
+                placeholder="Enter Mobile Number"
+                required
+            >
+
+            <label>
+                Operator<br>
+                অপারেটর
+            </label>
+
+            <select id="operator" required>
+                <option value="">Select Operator</option>
+                <option>Jio</option>
+                <option>Airtel</option>
+                <option>Vi</option>
+                <option>BSNL</option>
+            </select>
+
+            <label>
+                Recharge Amount<br>
+                রিচার্জ পরিমাণ
+            </label>
+
+            <input
+                type="number"
+                id="amount"
+                placeholder="Enter Amount"
+                required
+            >
+
+            <button type="submit">
+                Proceed to Pay<br>
+                পেমেন্ট করুন
+            </button>
+
+        </form>
+        <div class="payment-section" id="paymentSection">
+
+    <h2>
+        Scan & Pay<br>
+        স্ক্যান করে পেমেন্ট করুন
+    </h2>
+
+    <img src="assets/qr.png" alt="QR Code" class="qr-image">
+
+    <div class="upi-box">
+        UPI ID: 9733052848@ybl
+    </div>
+
+    <p class="payment-note">
+        Please pay exact recharge amount.<br>
+        সঠিক রিচার্জ পরিমাণ পেমেন্ট করুন।
+    </p>
+
+    <div class="warning-box">
+    ⚠️ Fake recharge requests may result in number blocking.<br>
+    ভুয়ো রিচার্জ রিকোয়েস্ট করলে নম্বর ব্লক করা হতে পারে।
+</div>
+
+<button id="paidBtn">
+    I Have Completed Payment<br>
+    আমি পেমেন্ট করেছি
+</button>
+
+</div>
+
+    </div>
+
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>
