@@ -47,6 +47,18 @@ const db = getFirestore(app);
 let isSubmitting = false;
 
 let lastSubmissionTime = 0;
+// LIMIT MOBILE NUMBER TO 10 DIGITS
+
+document
+  .getElementById("mobile")
+  .addEventListener("input", function () {
+
+    this.value =
+      this.value
+      .replace(/\D/g, "")
+      .slice(0, 10);
+
+});
 
 
 
