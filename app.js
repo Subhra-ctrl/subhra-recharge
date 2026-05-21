@@ -231,7 +231,6 @@ document
 
 
       // SEND TELEGRAM MESSAGE
-      // RUNS IN BACKGROUND
 
       fetch("/api/notify", {
 
@@ -313,6 +312,13 @@ document
     }
 
 });
+
+
+
+// =========================
+// SERVICE WORKER
+// =========================
+
 if ("serviceWorker" in navigator) {
 
   window.addEventListener("load", () => {
@@ -335,12 +341,27 @@ if ("serviceWorker" in navigator) {
   });
 
 }
+
+
+
+// =========================
+// INSTALL APP BUTTON
+// =========================
+
 let deferredPrompt;
 
 const installBtn =
 document.getElementById("installBtn");
 
+
+
+// HIDE BUTTON INITIALLY
+
 installBtn.style.display = "none";
+
+
+
+// SHOW BUTTON WHEN INSTALL AVAILABLE
 
 window.addEventListener("beforeinstallprompt", (e) => {
 
@@ -352,59 +373,45 @@ window.addEventListener("beforeinstallprompt", (e) => {
 
 });
 
-installBtn.addEventListener("click", async () => {
 
-    if (!deferredPrompt) {
 
-        return;
-
-    }
-
-    deferredPrompt.prompt();
-
-    const result =
-    await deferredPrompt.userChoice;
-
-    if (result.outcome === "accepted") {
-
-        installBtn.style.display = "none";
-
-    }
-
-});
-let deferredPrompt;
-
-const installBtn =
-document.getElementById("installBtn");
-
-installBtn.style.display = "none";
-
-window.addEventListener("beforeinstallprompt", (e) => {
-
-    e.preventDefault();
-
-    deferredPrompt = e;
-
-    installBtn.style.display = "block";
-
-});
+// INSTALL BUTTON CLICK
 
 installBtn.addEventListener("click", async () => {
 
-    if (!deferredPrompt) {
+    // INSTALL AVAILABLE
 
-        return;
+    if (deferredPrompt) {
+
+        deferredPrompt.prompt();
+
+        const result =
+        await deferredPrompt.userChoice;
+
+        if (result.outcome === "accepted") {
+
+            installBtn.innerHTML =
+            "✅ App Installed";
+
+        }
 
     }
 
-    deferredPrompt.prompt();
+    // FALLBACK
 
-    const result =
-    await deferredPrompt.userChoice;
+    else {
 
-    if (result.outcome === "accepted") {
+        alert(
+`To install app:
 
-        installBtn.style.display = "none";
+Chrome Menu (⋮)
+→ Add to Home Screen
+
+অ্যাপ ইনস্টল করতে:
+
+Chrome Menu (⋮)
+→ Add to Home Screen`
+        );
 
     }
 
