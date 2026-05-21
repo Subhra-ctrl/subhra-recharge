@@ -45,7 +45,9 @@ const db = getFirestore(app);
 // =========================
 
 let isSubmitting = false;
+
 let lastSubmissionTime = 0;
+
 
 
 // =========================
@@ -115,64 +117,50 @@ document
 
 
 
-    // SHOW PAYMENT SECTION
-
     // HIDE FORM
 
-document
-  .getElementById("rechargeForm")
-  .style.display = "none";
+    document
+      .getElementById("rechargeForm")
+      .style.display = "none";
 
 
 
-// SHOW LOADING
-
-document
-  .getElementById("loadingText")
-  .style.display = "block";
-
-
-
-// SHOW PAYMENT SECTION AFTER SMALL DELAY
-
-setTimeout(() => {
-
-  document
-    .getElementById("loadingText")
-    .style.display = "none";
-
-  document
-    .getElementById("paymentSection")
-    .style.display = "block";
-
-
-
-  // AUTO SCROLL
-
-  document
-    .getElementById("paymentSection")
-    .scrollIntoView({
-
-      behavior: "smooth"
-
-    });
-
-}, 1200);
+    // SHOW LOADING
 
     document
-      .getElementById("paymentSection")
+      .getElementById("loadingText")
       .style.display = "block";
 
+
+
+    // SHOW PAYMENT SECTION AFTER DELAY
+
+    setTimeout(() => {
+
+      document
+        .getElementById("loadingText")
+        .style.display = "none";
+
+      document
+        .getElementById("paymentSection")
+        .style.display = "block";
+
+
+
+      // AUTO SCROLL
+
+      document
+        .getElementById("paymentSection")
+        .scrollIntoView({
+
+          behavior: "smooth"
+
+        });
+
+    }, 1200);
+
 });
-// AUTO SCROLL TO PAYMENT SECTION
 
-document
-  .getElementById("paymentSection")
-  .scrollIntoView({
-
-    behavior: "smooth"
-
-  });
 
 
 // =========================
@@ -197,23 +185,27 @@ document
 
     if (!answer) return;
 
-// COOLDOWN PROTECTION
 
-const now = Date.now();
 
-if (now - lastSubmissionTime < 30000) {
+    // COOLDOWN PROTECTION
 
-  alert(
-    "Please wait 30 seconds before another request.\nআরেকটি রিকোয়েস্টের আগে ৩০ সেকেন্ড অপেক্ষা করুন।"
-  );
+    const now = Date.now();
 
-  return;
+    if (now - lastSubmissionTime < 30000) {
 
-}
+      alert(
+        "Please wait 30 seconds before another request.\nআরেকটি রিকোয়েস্টের আগে ৩০ সেকেন্ড অপেক্ষা করুন।"
+      );
 
-lastSubmissionTime = now;
+      return;
+
+    }
+
+
+
+    lastSubmissionTime = now;
+
     isSubmitting = true;
-
 
 
 
@@ -262,7 +254,7 @@ lastSubmissionTime = now;
 
       // SEND TELEGRAM MESSAGE
 
-      fetch("/api/notify", {
+      await fetch("/api/notify", {
 
         method: "POST",
 
@@ -369,6 +361,8 @@ if ("serviceWorker" in navigator) {
   });
 
 }
+
+
 
 // =========================
 // INSTALL APP BUTTON
