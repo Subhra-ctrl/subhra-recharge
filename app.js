@@ -75,10 +75,24 @@ document
 
     // MOBILE VALIDATION
 
-    if (mobile.length !== 10) {
+    if (!/^[6-9]\d{9}$/.test(mobile)) {
 
       alert(
-        "Please enter valid 10 digit mobile number.\nসঠিক ১০ সংখ্যার মোবাইল নম্বর লিখুন।"
+        "Please enter valid mobile number.\nসঠিক মোবাইল নম্বর লিখুন।"
+      );
+
+      return;
+
+    }
+
+
+
+    // OPERATOR VALIDATION
+
+    if (operator === "") {
+
+      alert(
+        "Please select operator.\nঅপারেটর নির্বাচন করুন।"
       );
 
       return;
@@ -141,13 +155,17 @@ document
   .getElementById("paidBtn")
   .addEventListener("click", async function () {
 
-    // ANTI MULTIPLE CLICK
+    // STOP MULTIPLE CLICKS
 
     if (isSubmitting) {
 
       return;
 
     }
+
+
+
+    // PAYMENT CONFIRMATION
 
     const answer = confirm(
       "Have you completed payment?\nপেমেন্ট সম্পূর্ণ করেছেন কি?"
@@ -158,6 +176,8 @@ document
       return;
 
     }
+
+
 
     isSubmitting = true;
 
@@ -204,15 +224,16 @@ document
 
         status: "pending",
 
-        createdAt: new Date()
+        createdAt: Date.now()
 
       });
 
 
 
       // SEND TELEGRAM MESSAGE
+      // RUNS IN BACKGROUND
 
-      await fetch("/api/notify", {
+      fetch("/api/notify", {
 
         method: "POST",
 
@@ -284,6 +305,8 @@ document
         I Have Completed Payment<br>
         আমি পেমেন্ট করেছি
       `;
+
+
 
       isSubmitting = false;
 
