@@ -313,3 +313,34 @@ form button:hover{
     }
 
 }
+.upi-pay-btn{
+
+    display:block;
+
+    width:100%;
+
+    background:#6a1b9a;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    margin-bottom:18px;
+
+    transition:0.2s;
+
+}
+
+.upi-pay-btn:hover{
+
+    background:#4a148c;
+
+}
