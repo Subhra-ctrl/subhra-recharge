@@ -259,3 +259,18 @@ button:active{
     background:#e68900;
 
 }
+.install-btn{
+
+    width:100%;
+
+    margin-bottom:20px;
+
+    background:#ff9800;
+
+}
+
+.install-btn:hover{
+
+    background:#e68900;
+
+}
