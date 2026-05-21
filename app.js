@@ -316,6 +316,10 @@ if ("serviceWorker" in navigator) {
 // INSTALL APP BUTTON
 // =========================
 
+// =========================
+// INSTALL APP BUTTON
+// =========================
+
 let deferredPrompt;
 
 const installBtn =
@@ -371,4 +375,8 @@ Chrome Menu (⋮)
 
 Chrome Menu (⋮)
 → হোম স্ক্রিনে যোগ করুন`
-);
+        );
+
+    }
+
+});
