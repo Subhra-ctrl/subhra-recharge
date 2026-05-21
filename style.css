@@ -23,6 +23,10 @@ body{
     box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
+
+
+/* TITLE */
+
 h1{
     text-align:center;
     font-size:26px;
@@ -38,6 +42,10 @@ h1{
     font-size:15px;
 }
 
+
+
+/* NOTICE */
+
 .notice{
     background:#e8f5e9;
     padding:14px;
@@ -48,6 +56,44 @@ h1{
     text-align:center;
     line-height:1.7;
 }
+
+
+
+/* INSTALL BUTTON */
+
+.install-btn{
+
+    width:100%;
+
+    margin-bottom:20px;
+
+    background:#0f766e;
+
+    color:white;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    transition:0.2s;
+
+}
+
+.install-btn:hover{
+
+    background:#115e59;
+
+}
+
+
+
+/* FORM */
 
 form{
     display:flex;
@@ -79,9 +125,12 @@ select:focus{
     border-color:#00875a;
 }
 
+
+
+/* BUTTONS */
+
 button{
     width:100%;
-    background:#00875a;
     color:white;
     border:none;
     padding:15px;
@@ -92,12 +141,20 @@ button{
     transition:0.2s;
 }
 
-button:hover{
-    background:#006644;
-}
-
 button:active{
     transform:scale(0.98);
+}
+
+
+
+/* PROCEED BUTTON */
+
+form button{
+    background:#00875a;
+}
+
+form button:hover{
+    background:#006644;
 }
 
 
@@ -116,6 +173,10 @@ button:active{
     line-height:1.6;
 }
 
+
+
+/* QR */
+
 .qr-image{
     width:300px;
     max-width:100%;
@@ -124,6 +185,10 @@ button:active{
     margin-bottom:15px;
     border:2px solid #ddd;
 }
+
+
+
+/* UPI */
 
 .upi-box{
     background:#f1f1f1;
@@ -135,6 +200,10 @@ button:active{
     color:#333;
     font-size:16px;
 }
+
+
+
+/* PAYMENT NOTE */
 
 .payment-note{
     font-size:14px;
@@ -242,35 +311,5 @@ button:active{
     .success-box p{
         font-size:18px;
     }
-
-}
-.install-btn{
-
-    width:100%;
-
-    margin-bottom:20px;
-
-    background:#ff9800;
-
-}
-
-.install-btn:hover{
-
-    background:#e68900;
-
-}
-.install-btn{
-
-    width:100%;
-
-    margin-bottom:20px;
-
-    background:#ff9800;
-
-}
-
-.install-btn:hover{
-
-    background:#e68900;
 
 }
