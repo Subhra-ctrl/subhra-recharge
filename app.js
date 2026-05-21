@@ -115,33 +115,15 @@ document
 
 
 
-    try {
+    // SHOW PAYMENT SECTION
 
-      // HIDE FORM
+    document
+      .getElementById("rechargeForm")
+      .style.display = "none";
 
-      document
-        .getElementById("rechargeForm")
-        .style.display = "none";
-
-
-
-      // SHOW PAYMENT SECTION
-
-      document
-        .getElementById("paymentSection")
-        .style.display = "block";
-
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert(
-        "Something went wrong!\nকিছু সমস্যা হয়েছে!"
-      );
-
-    }
+    document
+      .getElementById("paymentSection")
+      .style.display = "block";
 
 });
 
@@ -157,25 +139,17 @@ document
 
     // STOP MULTIPLE CLICKS
 
-    if (isSubmitting) {
-
-      return;
-
-    }
+    if (isSubmitting) return;
 
 
 
-    // PAYMENT CONFIRMATION
+    // PAYMENT CONFIRM
 
     const answer = confirm(
       "Have you completed payment?\nপেমেন্ট সম্পূর্ণ করেছেন কি?"
     );
 
-    if (!answer) {
-
-      return;
-
-    }
+    if (!answer) return;
 
 
 
@@ -183,7 +157,7 @@ document
 
 
 
-    // BUTTON LOADING STATE
+    // BUTTON LOADING
 
     const paidBtn =
       document.getElementById("paidBtn");
@@ -216,14 +190,10 @@ document
 
       await addDoc(collection(db, "recharges"), {
 
-        mobile: mobile,
-
-        operator: operator,
-
+        mobile,
+        operator,
         amount: Number(amount),
-
         status: "pending",
-
         createdAt: Date.now()
 
       });
@@ -305,8 +275,6 @@ document
         আমি পেমেন্ট করেছি
       `;
 
-
-
       isSubmitting = false;
 
     }
@@ -355,21 +323,13 @@ document.getElementById("installBtn");
 
 
 
-// HIDE BUTTON INITIALLY
-
-installBtn.style.display = "none";
-
-
-
-// SHOW BUTTON WHEN INSTALL AVAILABLE
+// SAVE INSTALL PROMPT
 
 window.addEventListener("beforeinstallprompt", (e) => {
 
     e.preventDefault();
 
     deferredPrompt = e;
-
-    installBtn.style.display = "block";
 
 });
 
@@ -379,7 +339,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
 
 installBtn.addEventListener("click", async () => {
 
-    // INSTALL AVAILABLE
+    // INSTALL PROMPT AVAILABLE
 
     if (deferredPrompt) {
 
@@ -397,7 +357,7 @@ installBtn.addEventListener("click", async () => {
 
     }
 
-    // FALLBACK
+    // FALLBACK MESSAGE
 
     else {
 
