@@ -45,7 +45,7 @@ const db = getFirestore(app);
 // =========================
 
 let isSubmitting = false;
-
+let lastSubmissionTime = 0;
 
 
 // =========================
@@ -151,9 +151,23 @@ document
 
     if (!answer) return;
 
+// COOLDOWN PROTECTION
 
+const now = Date.now();
 
+if (now - lastSubmissionTime < 30000) {
+
+  alert(
+    "Please wait 30 seconds before another request.\nআরেকটি রিকোয়েস্টের আগে ৩০ সেকেন্ড অপেক্ষা করুন।"
+  );
+
+  return;
+
+}
+
+lastSubmissionTime = now;
     isSubmitting = true;
+
 
 
 
@@ -309,12 +323,6 @@ if ("serviceWorker" in navigator) {
   });
 
 }
-
-
-
-// =========================
-// INSTALL APP BUTTON
-// =========================
 
 // =========================
 // INSTALL APP BUTTON
