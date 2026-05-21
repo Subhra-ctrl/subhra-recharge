@@ -126,7 +126,15 @@ document
       .style.display = "block";
 
 });
+// AUTO SCROLL TO PAYMENT SECTION
 
+document
+  .getElementById("paymentSection")
+  .scrollIntoView({
+
+    behavior: "smooth"
+
+  });
 
 
 // =========================
