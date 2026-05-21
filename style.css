@@ -344,3 +344,20 @@ form button:hover{
     background:#4a148c;
 
 }
+.loading-text{
+
+    display:none;
+
+    text-align:center;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#00875a;
+
+    margin-top:20px;
+
+    line-height:1.8;
+
+}

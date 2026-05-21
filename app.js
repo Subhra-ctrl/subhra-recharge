@@ -117,9 +117,47 @@ document
 
     // SHOW PAYMENT SECTION
 
-    document
-      .getElementById("rechargeForm")
-      .style.display = "none";
+    // HIDE FORM
+
+document
+  .getElementById("rechargeForm")
+  .style.display = "none";
+
+
+
+// SHOW LOADING
+
+document
+  .getElementById("loadingText")
+  .style.display = "block";
+
+
+
+// SHOW PAYMENT SECTION AFTER SMALL DELAY
+
+setTimeout(() => {
+
+  document
+    .getElementById("loadingText")
+    .style.display = "none";
+
+  document
+    .getElementById("paymentSection")
+    .style.display = "block";
+
+
+
+  // AUTO SCROLL
+
+  document
+    .getElementById("paymentSection")
+    .scrollIntoView({
+
+      behavior: "smooth"
+
+    });
+
+}, 1200);
 
     document
       .getElementById("paymentSection")
