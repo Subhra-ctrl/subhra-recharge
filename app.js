@@ -335,3 +335,40 @@ if ("serviceWorker" in navigator) {
   });
 
 }
+let deferredPrompt;
+
+const installBtn =
+document.getElementById("installBtn");
+
+installBtn.style.display = "none";
+
+window.addEventListener("beforeinstallprompt", (e) => {
+
+    e.preventDefault();
+
+    deferredPrompt = e;
+
+    installBtn.style.display = "block";
+
+});
+
+installBtn.addEventListener("click", async () => {
+
+    if (!deferredPrompt) {
+
+        return;
+
+    }
+
+    deferredPrompt.prompt();
+
+    const result =
+    await deferredPrompt.userChoice;
+
+    if (result.outcome === "accepted") {
+
+        installBtn.style.display = "none";
+
+    }
+
+});
